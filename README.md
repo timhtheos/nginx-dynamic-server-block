@@ -33,6 +33,7 @@ sudo service nginx restart
   Default is `1`.
 
   | Value | Description                  |
+  |-------|------------------------------|
   | 1     | 301 redirects non-www to www |
   |-------|------------------------------|
   | 0     | 301 redirects www to non-www |
