@@ -9,7 +9,7 @@ dynamic.
 Server blocks are Apache's virtual host' counterpart.
 
 Note that I have read
-!(https://www.nginx.com/resources/wiki/start/topics/depth/ifisevil/)[If is Evil].
+[If Is Evil](https://www.nginx.com/resources/wiki/start/topics/depth/ifisevil/)
 
 ## Installation
 
