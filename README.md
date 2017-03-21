@@ -28,9 +28,10 @@ and try again.
 
 ## What I want?
 
-1. I just want to create a directory of the domain name in a proper path and
+1. I just want to perform symlinking a server block once, and restarting nginx
+once. P.S. I do restart nginx sometimes, once in a blue moon.
+2. I just want to create a directory of the domain name in a proper path and
 clone the project inside `www` and check the web browser.
-2. There's no step 2.
 
 Lazy?
 
