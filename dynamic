@@ -1,0 +1,93 @@
+##
+# Global settings.
+
+# Set whether to use www by default, and to redirect non-www to www.
+map $host $dyn_www {
+  default 1;
+}
+
+# Set root base path.
+map $host $dyn_base {
+  # Omit the trailing slash.
+  default /var/www/sites;
+}
+
+# Set webroot directory name.
+map $host $dyn_web {
+  default www;
+}
+
+##
+# Main dynamic server block(s).
+
+# Non-www.
+server {
+  listen 80;
+  server_name ~^(?!www\.)(?<domain>.+)$;
+  index index.php index.html index.htm;
+  root $dyn_base/$domain/$dyn_web;
+  access_log /var/log/nginx/$domain/logs/access.log;
+
+  # Check if we need to 301 redirect to www; if yes, redirect, and break.
+  if (!-f $dyn_base/$domain/www-) {
+    return 301 $scheme://www.$domain$request_uri;
+    break;
+  }
+
+  # Location.
+  location / {
+    try_files $uri $uri/ =404;
+  }
+
+  # Php.
+  location ~ \.php$ {
+    try_files $uri =404;
+    fastcgi_split_path_info ^(.+\.php)(/.+)$;
+    
+    fastcgi_pass unix:/var/run/php5-fpm.sock;
+    fastcgi_index index.php;
+    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    include fastcgi_params;
+  }
+  
+  # Deny .ht files.
+  location ~ /\.ht {
+    deny all;
+  }
+}
+
+# Www.
+server {
+  listen 80;
+  server_name ~^(www\.)(?<domain>.+)$;
+  index index.php index.html index.htm;
+  root $dyn_base/$domain/$dyn_web;
+  access_log /var/log/nginx/$domain/logs/access.log;
+
+  # Check if we need to 301 redirect to non-www; if yes, redirect, and break.
+  if (-f $dyn_base/$domain/www-) {
+    return 301 $scheme://$domain$request_uri;
+    break;
+  }
+
+  # Location.
+  location / {
+    try_files $uri $uri/ =404;
+  }
+  
+  # Php.
+  location ~ \.php$ {
+    try_files $uri =404;
+    fastcgi_split_path_info ^(.+\.php)(/.+)$;
+    
+    fastcgi_pass unix:/var/run/php5-fpm.sock;
+    fastcgi_index index.php;
+    fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    include fastcgi_params;
+  }
+  
+  # Deny .ht files.
+  location ~ /\.ht {
+    deny all;
+  }
+}
