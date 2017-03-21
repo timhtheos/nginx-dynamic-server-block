@@ -59,13 +59,36 @@ sites-available directory to sites-enabled directory.
 $dyn_base/project-directory/$dyn_web/
 ```
 
+#### Examples
+
+```
+/var/www/sites/example.com/www
+/var/www/sites/demo.com/www
+```
+
+## How to setup a project
+
+1. Simple. Just create a directory inside your $dyn_base directory. For example,
+if your $dyn_base is `/var/www/sites` and your project is `github.com`, just
+create a directory inside `/var/www/sites` named `github.com` to become
+`/var/www/sites/github.com`.
+
+2. Then, create a directory matched to `$dyn_web`.  For example, if your $dyn_web
+is `public_html`, plus the variables in the given example in No. 1, you should
+have the following structure: `/var/www/sites/github.com/public_html`.
+
+To test, place a file `index.html` inside your `public_html` and view it in a
+browser.
+
+Note that there is no need to restart nginx, et. al.
+
 ## Project-specific settings
 
-### 301 redirect non-www to www (if default global setting is otherwise)
+#### 301 redirect non-www to www (if default global setting is otherwise)
 
-    In the project directory, add a file `www+`.  Currently, this is not yet
-    implemented.
+  In the project directory, add a file `www+`.  Currently, this is not yet
+  implemented.
 
-### 301 redirect www to non-www (if default global setting is otherwise)
+#### 301 redirect www to non-www (if default global setting is otherwise)
 
-    In the project directory, add a file `www-`.
+  In the project directory, add a file `www-`.
