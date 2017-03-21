@@ -35,7 +35,6 @@ sudo service nginx restart
   | Value | Description                  |
   |-------|------------------------------|
   | 1     | 301 redirects non-www to www |
-  |-------|------------------------------|
   | 0     | 301 redirects www to non-www |
 
   Unfortunately, this feature has not yet been implemented.  The plan for this is
