@@ -1,7 +1,12 @@
 # Nginx dynamic server block
 
-I wrote this for my own satisfaction.  I read others' work, and by reading, I
-learn from them.
+I read others' work, and by reading others work, I learn from them.
+
+I wrote this for my own satisfaction and need.  I always end up writing server
+block(s) in nginx, and because I am lazy, I just spent some time making it
+dynamic.
+
+Server blocks are Apache's virtual host' counterpart.
 
 ## Installation
 
