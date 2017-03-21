@@ -65,12 +65,7 @@ sites-available directory to sites-enabled directory.
 
 | Term | Definition |
 |---|---|
-| Project name | The project name shall be the project directory created inside
-`$dyn_base` directory. It contains a directory named matched to `$dyn_web` and
-may also contain build scripts and directories, and other files/directories. The
-Project name shall be at all times the domain name of the site, minus the alias
-`www` irrespective of the global settings for `$dyn_www`.  The same rule applies
-to subdomain names. |
+| Project name | The project name shall be the project directory created inside `$dyn_base` directory. It contains a directory named matched to `$dyn_web` and may also contain build scripts and directories, and other files/directories. The Project name shall be at all times the domain name of the site, minus the alias `www` irrespective of the global settings for `$dyn_www`.  The same rule applies to subdomain names. |
 | Project directory | See Project name. |
 
 ## Host directory structure
