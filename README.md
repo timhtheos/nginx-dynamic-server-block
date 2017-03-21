@@ -147,4 +147,5 @@ redirected to its non-www.
 
 ## @todo
 
-Revise this fucking README.md file.
+1. Revise this fucking README.md file.
+2. Improve naming convention for variables used.
