@@ -11,6 +11,29 @@ Server blocks are Apache's virtual host' counterpart.
 Note that I have read
 [If Is Evil](https://www.nginx.com/resources/wiki/start/topics/depth/ifisevil/).
 
+## Why is there a need for a dynamic server blocks?
+
+Simple. Here are the things I don't want to do, every time I add a new website
+into the server.
+
+1. I don't want to duplicate a server block file and rename it to a new website.
+2. I don't want to edit the said copied file and change variables there, such as
+`root`,`server_name`, `access_logs`, among others.
+3. I don't want to symlink the said copied file from sites-available to
+sites-enabled.
+4. I don't want to restart nginx every time I do the above steps.
+5. And I don't want to re-edit the same file, if nginx failed and test with `-t`
+and try again.
+6. I am lazy.
+
+## What I want?
+
+1. I just want to create a directory of the domain name in a proper path and
+clone the project inside `www` and check the web browser.
+2. There's no step 2.
+
+Lazy?
+
 ## Installation
 
 1. Copy `dynamic` file into your nginx' sites-available directory that is usually
