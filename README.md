@@ -8,6 +8,9 @@ dynamic.
 
 Server blocks are Apache's virtual host' counterpart.
 
+Note that I have read
+!(https://www.nginx.com/resources/wiki/start/topics/depth/ifisevil/)[If is Evil].
+
 ## Installation
 
 1. Copy `dynamic` file into your nginx' sites-available directory that is usually
