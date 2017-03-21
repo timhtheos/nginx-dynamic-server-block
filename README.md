@@ -82,6 +82,19 @@ browser.
 
 Note that there is no need to restart nginx, et. al.
 
+Note further that the project name shall be the domain name minus the `www`
+irrespective of your global and project-specific setting(s) for `$dyn_www`.
+
+In the given example, `github.com` directory can opt to have non-www 301
+redirect to www.
+
+For subdomain names, just still create the directory matching the subdomain name.
+
+The default global $dyn_www setting is not so subdomain name friendly.  This
+can be overridden in project level. Just create another file named `www-` inside
+the project directory, and a subdomain with a `www` before it will be 301
+redirected to its non-www.
+
 ## Project-specific settings
 
 #### 301 redirect non-www to www (if default global setting is otherwise)
