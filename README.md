@@ -32,11 +32,9 @@ sudo service nginx restart
 
   Default is `1`.
 
-  |---|------------------------------|
   | 1 | 301 redirects non-www to www |
   |---|------------------------------|
   | 0 | 301 redirects www to non-www |
-  |---|------------------------------|
 
   Unfortunately, this feature has not yet been implemented.  The plan for this is
   to include ease override per project.
