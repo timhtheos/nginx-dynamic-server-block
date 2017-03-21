@@ -8,23 +8,23 @@ learn from them.
 1. Copy `dynamic` file into your nginx' sites-available directory that is usually
 found in `/etc/nginx/sites-available` directory.
 
-```
-cd /etc/nginx/sites-available
-sudo wget https://raw.githubusercontent.com/timhtheos/nginx-dynamic-server-block/master/dynamic
-```
+  ```
+  cd /etc/nginx/sites-available
+  sudo wget https://raw.githubusercontent.com/timhtheos/nginx-dynamic-server-block/master/dynamic
+  ```
 
 2. Enable `dynamic` server block. This can be done by symlinking `dyanmic` from
 sites-available directory to sites-enabled directory.
 
-```
-sudo ln -s /etc/nginx/sites-available/dynamic /etc/nginx/sites-enabled/dynamic
-```
+  ```
+  sudo ln -s /etc/nginx/sites-available/dynamic /etc/nginx/sites-enabled/dynamic
+  ```
 
 3. Restart/reboot nginx.
 
-```
-sudo service nginx restart
-```
+  ```
+  sudo service nginx restart
+  ```
 
 ## Global settings
 
@@ -46,13 +46,26 @@ sudo service nginx restart
 
   Projects are setup within this directory.
 
-3. Set default weebroot directory name. Default is `www`. This can be changed to
-other name such as `web`, "public_html", among others. This is one directory down
-inside a root host directory.
+3. Set default `$dyn_web`.
 
-## Directory structure
+  Default is `www`.
 
-/dyn-base
-/root-base-path/project-root/webroot
+  This can be set to other name such as `web`, `public_heml`, among others. This
+  directory resides inside the project directory.
 
+## Host directory structure
 
+```
+$dyn_base/project-directory/$dyn_web/
+```
+
+## Project-specific settings
+
+### 301 redirect non-www to www (if default global setting is otherwise)
+
+    In the project directory, add a file `www+`.  Currently, this is not yet
+    implemented.
+
+### 301 redirect www to non-www (if default global setting is otherwise)
+
+    In the project directory, add a file `www-`.
