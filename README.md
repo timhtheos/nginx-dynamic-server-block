@@ -28,12 +28,24 @@ sudo service nginx restart
 
 ## Global settings
 
-1. Set default use of alias www. The default is `1`, which redirects non-www to
-www, otherwise, `0`, which redirects www to non-www.  Note that this can easily
-be overridden per host.
+1. Set default `$dyn_www`.
 
-2. Set root base path.  Default is `/var/www/sites`. This means projects are
-setup within that directory.
+  Default is `1`.
+
+  |---|------------------------------|
+  | 1 | 301 redirects non-www to www |
+  |---|------------------------------|
+  | 0 | 301 redirects www to non-www |
+  |---|------------------------------|
+
+  Unfortunately, this feature has not yet been implemented.  The plan for this is
+  to include ease override per project.
+
+2. Set default `$dyn_base`.
+
+  Default is `/var/www/sites`.
+
+  Projects are setup within this directory.
 
 3. Set default weebroot directory name. Default is `www`. This can be changed to
 other name such as `web`, "public_html", among others. This is one directory down
