@@ -13,7 +13,7 @@ Note that I have taken
 [If Is Evil](https://www.nginx.com/resources/wiki/start/topics/depth/ifisevil/)
 into account.
 
-## Why is there a need for a dynamic server blocks?
+## Why is there a need for dynamic server blocks?
 
 Here are the things I don't want to do, every time I add a new website into the
 server.
