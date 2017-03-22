@@ -34,9 +34,17 @@ server {
     break;
   }
 
-  # Location.
+  # Location block.
   location / {
-    try_files $uri $uri/ =404;
+    # try_files $uri $uri/ =404;
+    root   $dyn_base/$domain/$dyn_web;
+    index  index.php index.html index.htm;
+    error_page 404 = @drupal;
+  }
+
+  # Location block for drupal's clean_url.
+  location @drupal {
+    rewrite ^(.*)$ /index.php?q=$1 last;
   }
 
   # Php.
@@ -44,10 +52,13 @@ server {
     try_files $uri =404;
     fastcgi_split_path_info ^(.+\.php)(/.+)$;
     
-    fastcgi_pass unix:/var/run/php5-fpm.sock;
+    # fastcgi_pass unix:/var/run/php56-fpm.sock;
     fastcgi_index index.php;
     fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
     include fastcgi_params;
+
+    # OSX.
+    fastcgi_pass   127.0.0.1:9000;
   }
   
   # Deny .ht files.
@@ -70,20 +81,31 @@ server {
     break;
   }
 
-  # Location.
+  # Location block.
   location / {
-    try_files $uri $uri/ =404;
+    # try_files $uri $uri/ =404;
+    root   $dyn_base/$domain/$dyn_web;
+    index  index.php index.html index.htm;
+    error_page 404 = @drupal;
   }
   
+  # Location block for drupal's clean_url.
+  location @drupal {
+    rewrite ^(.*)$ /index.php?q=$1 last;
+  }
+
   # Php.
   location ~ \.php$ {
     try_files $uri =404;
     fastcgi_split_path_info ^(.+\.php)(/.+)$;
-    
-    fastcgi_pass unix:/var/run/php5-fpm.sock;
+
+    # fastcgi_pass unix:/var/run/php56-fpm.sock;
     fastcgi_index index.php;
     fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
     include fastcgi_params;
+
+    # OSX.
+    fastcgi_pass   127.0.0.1:9000;
   }
   
   # Deny .ht files.
