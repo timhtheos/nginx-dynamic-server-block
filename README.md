@@ -39,8 +39,8 @@ Lazy?
 
 ## Manual installation
 
-1. Copy `dynamic` file into your nginx' sites-available directory that is usually
-found in `/etc/nginx/sites-available` directory.
+1. Copy `dynamic` file into your nginx' `sites-available` directory that is usually
+found in `/etc/nginx/sites-available`.
 
   ```
   $ cd /etc/nginx/sites-available
@@ -51,13 +51,13 @@ found in `/etc/nginx/sites-available` directory.
 sites-available directory to sites-enabled directory.
 
   ```
-  sudo ln -s /etc/nginx/sites-available/dynamic /etc/nginx/sites-enabled/dynamic
+  $ sudo ln -s /etc/nginx/sites-available/dynamic /etc/nginx/sites-enabled/dynamic
   ```
 
 3. Restart/reboot nginx.
 
   ```
-  sudo service nginx restart
+  $ sudo service nginx restart
   ```
 
 ## Automated installation
@@ -68,7 +68,7 @@ If you trust me enough, go ahead and execute the following.
 tested with Ubuntu 14.04. Try at your own risk.**
 
 ```
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/timhtheos/nginx-dynamic-server-block/master/install.sh)"
+$ sh -c "$(curl -fsSL https://raw.githubusercontent.com/timhtheos/nginx-dynamic-server-block/master/install.sh)"
 ```
 
 ## Global settings (optional)
