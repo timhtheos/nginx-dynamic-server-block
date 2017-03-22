@@ -64,7 +64,8 @@ sites-available directory to sites-enabled directory.
 
 If you trust me enough, go ahead and execute the following.
 
-**Note that you must be root in order to do this.**
+**Note that you must be root in order to do this. The following command has been
+tested with Ubuntu 14.04. Try at your own risk.**
 
 ```
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/timhtheos/nginx-dynamic-server-block/master/install.sh)"
@@ -158,3 +159,4 @@ browser.
 
 1. Revise this fucking README.md file.
 2. Improve naming convention for variables used.
+3. Include features for choice of php version.
