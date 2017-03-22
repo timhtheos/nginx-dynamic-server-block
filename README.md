@@ -118,7 +118,7 @@ $dyn_base/project-name-directory/$dyn_web/
 /var/www/sites/demo.com/www
 ```
 
-## How to setup a project
+## How to setup a project?
 
 Let's assume the global settings are in default; and the project name is
 `github.com`.
