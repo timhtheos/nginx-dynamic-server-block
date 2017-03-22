@@ -3,18 +3,20 @@
 I read others' work, and by reading others work, I learn from them.
 
 I wrote this for my own satisfaction and need.  I always end up writing server
-block(s) in nginx, and because I am lazy, I just spent some time making it
-dynamic.
+block(s) in nginx. I always thought of spending some time making it dynamic.
+
+Hence, this.
 
 Server blocks are Apache's virtual host' counterpart.
 
-Note that I have read
+Note that I have taken
 [If Is Evil](https://www.nginx.com/resources/wiki/start/topics/depth/ifisevil/).
+into account.
 
 ## Why is there a need for a dynamic server blocks?
 
-Simple. Here are the things I don't want to do, every time I add a new website
-into the server.
+Here are the things I don't want to do, every time I add a new website into the
+server.
 
 1. I don't want to duplicate a server block file and rename it to a new website.
 2. I don't want to edit the said copied file and change variables there, such as
@@ -24,7 +26,7 @@ sites-enabled.
 4. I don't want to restart nginx every time I do the above steps.
 5. And I don't want to re-edit the same file, if nginx failed and test with `-t`
 and try again.
-6. I am lazy.
+6. I'm lazy.
 
 ## What I want?
 
@@ -41,8 +43,8 @@ Lazy?
 found in `/etc/nginx/sites-available` directory.
 
   ```
-  cd /etc/nginx/sites-available
-  sudo wget https://raw.githubusercontent.com/timhtheos/nginx-dynamic-server-block/master/dynamic
+  $ cd /etc/nginx/sites-available
+  $ sudo wget https://raw.githubusercontent.com/timhtheos/nginx-dynamic-server-block/master/dynamic
   ```
 
 2. Enable `dynamic` server block. This can be done by symlinking `dyanmic` from
@@ -58,7 +60,7 @@ sites-available directory to sites-enabled directory.
   sudo service nginx restart
   ```
 
-## Global settings
+## Global settings (optional)
 
 1. Set default `$dyn_www`.
 
@@ -92,10 +94,10 @@ sites-available directory to sites-enabled directory.
 | Project name | The project name shall be the project directory created inside `$dyn_base` directory. It contains a directory named matched to `$dyn_web` and may also contain build scripts and directories, and other files/directories. The Project name shall be at all times the domain name of the site, minus the alias `www` irrespective of the global settings for `$dyn_www`.  The same rule applies to subdomain names. |
 | Project directory | See Project name. |
 
-## Host directory structure
+## Host directory path structure
 
 ```
-$dyn_base/project-directory/$dyn_web/
+$dyn_base/project-name-directory/$dyn_web/
 ```
 
 #### Examples
@@ -107,32 +109,29 @@ $dyn_base/project-directory/$dyn_web/
 
 ## How to setup a project
 
-1. Simple. Just create a directory inside your $dyn_base directory. For example,
-if your $dyn_base is `/var/www/sites` and your project is `github.com`, just
-create a directory inside `/var/www/sites` named `github.com` to become
-`/var/www/sites/github.com`.
+Let's assume the global settings is in default; and the project name is
+`github.com`.
 
-2. Then, create a directory matched to `$dyn_web`.  For example, if your $dyn_web
-is `public_html`, plus the variables in the given example in No. 1, you should
-have the following structure: `/var/www/sites/github.com/public_html`.
+1. Create a directory inside `/var/www/sites`. The directory name shall be the
+domain or subdomain name of the project, minus the alias `www`.
 
-To test, place a file `index.html` inside your `public_html` and view it in a
+  ```
+  $ cd /var/www/sites;
+  $ mkdir github.com
+  ```
+
+2. Create a directory `www` inside the project directory.
+
+  ```
+  $ mkdir -p github.com/www
+  ```
+
+3. (optional) Create `index.html` file inside `www`, and check the url in your
 browser.
 
-Note that there is no need to restart nginx, et. al.
-
-Note further that the project name shall be the domain name minus the `www`
-irrespective of your global and project-specific setting(s) for `$dyn_www`.
-
-In the given example, `github.com` directory can opt to have non-www 301
-redirect to www.
-
-For subdomain names, just still create the directory matching the subdomain name.
-
-The default global $dyn_www setting is not so subdomain name friendly.  This
-can be overridden in project level. Just create another file named `www-` inside
-the project directory, and a subdomain with a `www` before it will be 301
-redirected to its non-www.
+  ```
+  $ echo "Hello World\!" >> github.com/www/index.html
+  ```
 
 ## Project-specific settings
 
