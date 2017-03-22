@@ -95,7 +95,7 @@ $ sh -c "$(curl -fsSL https://raw.githubusercontent.com/timhtheos/nginx-dynamic-
 
   Default is `www`.
 
-  This can be set to other name such as `web`, `public_heml`, among others. This
+  This can be set to other name such as `web`, `public_html`, among others. This
   directory resides inside the project directory.
 
 ## Definition of other terms
@@ -120,7 +120,7 @@ $dyn_base/project-name-directory/$dyn_web/
 
 ## How to setup a project
 
-Let's assume the global settings is in default; and the project name is
+Let's assume the global settings are in default; and the project name is
 `github.com`.
 
 1. Create a directory inside `/var/www/sites`. The directory name shall be the
