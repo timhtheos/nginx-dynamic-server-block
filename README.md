@@ -37,7 +37,7 @@ clone the project inside `www` and check the web browser.
 
 Lazy?
 
-## Installation
+## Manual installation
 
 1. Copy `dynamic` file into your nginx' sites-available directory that is usually
 found in `/etc/nginx/sites-available` directory.
@@ -59,6 +59,16 @@ sites-available directory to sites-enabled directory.
   ```
   sudo service nginx restart
   ```
+
+## Automated installation
+
+If you trust me enough, go ahead and execute the following.
+
+**Note that you must be root in order to do this.**
+
+```
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/timhtheos/nginx-dynamic-server-block/master/install.sh)"
+```
 
 ## Global settings (optional)
 
