@@ -1,1 +1,7 @@
-default
+# Ignore everything.
+*
+
+# Except.
+!dynamic
+!README.md
+!install.sh
